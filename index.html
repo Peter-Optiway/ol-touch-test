@@ -35,7 +35,7 @@
         })
       });
 	  var log = document.getElementById('log');
-	  ['click', 'dblclick', 'movestart', 'pointerdrag', 'pointermove', 'singleclick'].forEach((event) => {
+	  ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((event) => {
 		map.on(event, () => log.value = event + '\n' + log.value);
 	  });
     </script>
