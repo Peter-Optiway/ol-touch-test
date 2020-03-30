@@ -48,7 +48,7 @@
       });
 	  var log = document.getElementById('log');
 	  ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((eventType) => {
-		map.on(eventType, (event) => log.value = eventType.rightPad(' ', 15) + '(' + event.pixel[0].toString().leftPad(' ', 9) + ', ' + event.pixel[1].toString().leftPad(9) + ')' + '\n' + log.value);
+		map.on(eventType, (event) => log.value = eventType.rightPad(' ', 15) + '(' + event.pixel[0].toString().leftPad(' ', 6) + ', ' + event.pixel[1].toString().leftPad(' ', 6) + ')' + '\n' + log.value);
 	  });
     </script>
   </body>
