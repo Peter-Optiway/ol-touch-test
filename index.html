@@ -24,15 +24,15 @@
     <script type="module">
       String.prototype.rightPad = function(padString, length) {
         var str = this;
-	while (str.length < length)
-	  str = str + padString;
-	return str;
+        while (str.length < length)
+          str = str + padString;
+        return str;
       }
       String.prototype.leftPad = function(padString, length) {
         var str = this;
-	while (str.length < length)
-	  str = padString + str;
-	return str;
+        while (str.length < length)
+          str = padString + str;
+        return str;
       }
       var map = new ol.Map({
         layers: [
@@ -46,10 +46,17 @@
           zoom: 2
         })
       });
-	  var log = document.getElementById('log');
-	  ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((eventType) => {
-		map.on(eventType, (event) => log.value = eventType.rightPad(' ', 15) + '(' + event.pixel[0].toString().leftPad(' ', 6) + ', ' + event.pixel[1].toString().leftPad(' ', 6) + ')' + '\n' + log.value);
-	  });
+      var log = document.getElementById('log');
+      ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((eventType) => {
+        map.on(eventType, (event) => {
+	  if (event.pixel) {
+            log.value = eventType.rightPad(' ', 15) + '(' + event.pixel[0].toString().leftPad(' ', 6) + ', ' + event.pixel[1].toString().leftPad(' ', 6) + ')' + '\n' + log.value;
+	  }
+          else {
+            log.value = eventType.rightPad(' ', 15) + '\n' + log.value;
+	  }
+        });
+      });
     </script>
   </body>
 </html>
