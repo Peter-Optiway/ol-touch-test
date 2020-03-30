@@ -22,6 +22,18 @@
     <div id="map" class="map"></div>
 	<textarea id="log"></textarea>
     <script type="module">
+      String.prototype.rightPad = function(padString, length) {
+        var str = this;
+	while (str.length < length)
+	  str = str + padString;
+	return str;
+      }
+      String.prototype.leftPad = function(padString, length) {
+        var str = this;
+	while (str.length < length)
+	  str = padString + str;
+	return str;
+      }
       var map = new ol.Map({
         layers: [
           new ol.layer.Tile({
@@ -36,7 +48,7 @@
       });
 	  var log = document.getElementById('log');
 	  ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((event) => {
-		map.on(event, () => log.value = event + '\n' + log.value);
+		map.on(event, (event) => log.value = event.rightPad(15) + '(' + event.pixel[0].toString().leftPad(9) + ', ' + event.pixel[1].toString().leftPad(9) + ')' + '\n' + log.value);
 	  });
     </script>
   </body>
