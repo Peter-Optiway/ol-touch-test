@@ -47,8 +47,8 @@
         })
       });
 	  var log = document.getElementById('log');
-	  ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((event) => {
-		map.on(event, (event) => log.value = event.rightPad(15) + '(' + event.pixel[0].toString().leftPad(9) + ', ' + event.pixel[1].toString().leftPad(9) + ')' + '\n' + log.value);
+	  ['click', 'dblclick', 'movestart', 'moveend', 'pointerdrag', 'pointermove', 'singleclick'].forEach((eventType) => {
+		map.on(eventType, (event) => log.value = eventType.rightPad(15) + '(' + event.pixel[0].toString().leftPad(9) + ', ' + event.pixel[1].toString().leftPad(9) + ')' + '\n' + log.value);
 	  });
     </script>
   </body>
